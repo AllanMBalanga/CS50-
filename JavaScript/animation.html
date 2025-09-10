@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+            animation-name: grow;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+            position: relative;
+            animation-iteration-count: infinite;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes grow {
+            0% {
+                font-size: 20px;
+                left: 0%;
+            }
+            50% {
+                font-size: 50px;
+                left: 50%;
+            }
+            100% {
+                font-size: 20px;
+                left: 0%;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const btn = document.getElementById("btn");
+            const h1 = document.querySelector("h1");
+
+            h1.style.animationPlayState = "paused";
+
+            btn.onclick = function() {
+                if (h1.style.animationPlayState === "paused") {
+                    h1.style.animationPlayState = "running";
+                }
+                else {
+                    h1.style.animationPlayState = "paused";
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+    <button id="btn">Click Me!</button>
+    <h1>Hello!</h1>
+    
+</body>
+</html>

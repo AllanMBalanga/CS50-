@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Tasks</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", function(){
+                const tasks = document.querySelector("#tasks");
+                const new_task = document.querySelector("#task")
+                const submit = document.querySelector("#submit")
+
+                submit.disabled = true;
+
+                new_task.onkeyup = function() {
+                    if (new_task.value.length > 0) {
+                        submit.disabled = false;
+                    }
+                    else {
+                        submit.disabled = true;
+                    }
+                }
+
+                document.querySelector("form").onsubmit = function() {
+                    const task = new_task.value;
+                    const li = document.createElement('li');
+                    li.innerHTML = task;
+
+                    tasks.append(li);
+
+                    new_task.value = "";
+                    
+                    submit.disabled = true;
+
+                    return false;
+                }
+            })
+        </script>
+    </head>
+    <body>
+        <h1>Tasks</h1>
+        <ul id="tasks">
+        </ul>
+        <form>
+            <input type="text" autofocus id="task" placeholder="New Task">
+            <input type="submit" id="submit">
+        </form>
+    </body>
+</html>
